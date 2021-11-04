@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this,ChonBaiActivity.class);
                 startActivity(i);
                 finish();
+                player.stop();
             }
         });
         play = findViewById(R.id.play);
