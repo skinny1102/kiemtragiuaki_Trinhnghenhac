@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button chonbai,play,pause;
-    int id ;
     String name_song,sttu;
     MediaPlayer player;
     int duration;
+    int id ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private  void unitUi(){
         TextView nameSong = findViewById(R.id.nameMusic);
+        play = findViewById(R.id.play);
+        chonbai = findViewById(R.id.chonbai);
+        pause = findViewById(R.id.pause);
         TextView stt = findViewById(R.id.stt);
+        /// Defaul mặc định vào sẽ là bài 1
         if(name_song==null){
             nameSong.setText("Ái Nội");
             stt.setText("Bài "+1);
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             nameSong.setText(name_song);
             stt.setText("Bài " + sttu);
         }
-        chonbai = findViewById(R.id.chonbai);
+        /// Start Activity chọn bài
         chonbai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 player.stop();
             }
         });
-        play = findViewById(R.id.play);
+
         if(id==0){
             player = MediaPlayer.create(MainActivity.this,R.raw.bai1);
             int duration = player.getDuration();
@@ -55,13 +59,14 @@ public class MainActivity extends AppCompatActivity {
             int duration = player.getDuration();
             getTime(duration);
         }
+        ///Play nhạc
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 player.start();
             }
         });
-        pause = findViewById(R.id.pause);
+        /// Pause Nhạc
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
